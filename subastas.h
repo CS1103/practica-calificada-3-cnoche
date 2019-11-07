@@ -9,8 +9,8 @@ class Objetos{
     string name;
     int cant_objetos;
     
-    Objetos() { name = ""; cant_objetos = 0; }
-    Objetos(string s) { name = s; cant_objetos = 0; }
+    Objetos();
+    Objetos(string s);
 };
 
 void idk();
