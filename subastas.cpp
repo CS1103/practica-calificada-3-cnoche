@@ -6,7 +6,8 @@
 #include <string>
 #include <iterator>
 #include <sstream>
-#include "read.h"
+#include <map>
+#include "subastas.h"
 
 using namespace std;
 
@@ -28,7 +29,13 @@ class Ofertas{
 };
 
 void ingresar_datos(){
-    string line;
+    ifstream file;
+    file.open("bid_example.txt");
+
+    if (file.fail()){
+        cerr << "No existe el archivo\n";
+    }
+    string archivo;
     string alias;
     //se asume que todos los bids son ints
     int precio;
@@ -37,40 +44,70 @@ void ingresar_datos(){
     //vector para objetos -> se utilizan vectores con el fin de poder enumerarlos de manera fácil
     vector<Objetos> object;
     //mapa para que cada objeto tenga un número
-    map<Ofertas,int> offers;
+    map<int,Ofertas> offers;
+    string txt = read();
+    stringstream text(txt); 
 
-    while (line) {
-        if(isupper(line[0])){
-            object.push_back(Objetos(line));
+    while(getline(file,archivo)){{
+        if(isupper(archivo[0])){
+            object.push_back(Objetos(archivo));
             cnt++;
         }
         else{
-            int index = offers[line];
+            int index = offers[archivo];
             if (index == 0){
-                values.str(line);
+                values.str(archivo);
                 values >> alias;
                 values >> precio;
-                Ofertas(alias,precio);
-
+            
+            offers.insert(pair<int, Objetos>(cnt, Ofertas(alias,precio)));
             } else if(index != cnt && index > 0){
                 //remove participant
             }
         }
-    map<int,Ofertas>::iterator it;
-    vector<Objetos>::iterator vit;    
-    //get the maximum
-    for (int i = 0; i < object.size(); i++){
-        for (it.begin(); it.end(); it++){
-            int max = 0;
-            //para todos los que tengan el key de i
-            //if (max<precio[it]){
-                max = offers.second.precio[it]
-            }
-        } 
-    }
-    //promedio
-
-    //minimum
     }
 }
 
+file.close();
+
+}
+
+int getmax(map<Objetos,int> offers, int n){
+    map<int,Ofertas>::iterator it;
+    vector<Objetos>::iterator vit;    
+    int max = 0; 
+    for (int i = 0; i < n; i++){
+        for (it = offers.cbegin(); it < offers.cend(); it++){
+            //for(todos los maps con key = 1)
+        
+            if (max < it->second.offers.precio){
+                max = offers[].precio;
+            }
+        } 
+    }
+    return max;
+}
+
+double getprom(map<Objetos,int> offers, int n){
+    double promedio;
+    for (int i = 0; i < n; i++){
+        for (auto it:offers){
+            //for todos los que tienen key igual a i
+
+        } 
+    }
+    return promedio;
+}
+
+int getmin(map<Objetos,int> offers, int n){
+    int min = 900000000;
+    for (int i = 0; i < n; i++){
+        for (auto it:offers){
+            //for todos los que tienen key igual a i
+            if (min > offers[it].precio){
+                min = offers[it].precio;
+            }
+        } 
+    }
+    return min;
+}

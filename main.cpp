@@ -2,12 +2,13 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
-#include "read.h"
+#include "subastas.h"
+#include "create.h"
 using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    ingresar_datos();
+    
 }
 
 

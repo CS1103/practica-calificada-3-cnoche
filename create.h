@@ -1,7 +1,5 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-using namespace std;
 
-
-void create(ifstream archivo);
+void create(std::ifstream archivo);

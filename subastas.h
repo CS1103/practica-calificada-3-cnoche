@@ -12,5 +12,16 @@ class Objetos{
     Objetos();
     Objetos(string s);
 };
+class Ofertas{
+    public:
+    string alias;
+    int precio;
 
-void idk();
+    Ofertas();
+    Ofertas(string s, int n);
+};
+
+    void ingresar_datos();
+    int getmax(map<Objetos,int> offers, vector<Objetos>);
+    double getprom(map<Objetos,int> offers, vector<Objetos> object);
+    int getmin(map<Objetos,int> offers, vector<Objetos>);

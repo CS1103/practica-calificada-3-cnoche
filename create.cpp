@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void create(){
+void create(ifstream files){
     ofstream archivo;
     string texto, name;
     
@@ -14,7 +14,7 @@ void create(){
     archivo.open(name.c_str(), ios::out); //abriendo el archivo
 
     while(getline(cin,texto)){
-        texto >> archivo;
+        archivo << texto << endl;
     }
 
     if (archivo.fail()){
