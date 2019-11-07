@@ -25,7 +25,7 @@ class Ofertas{
 
     Ofertas() {alias = "";}
     Ofertas(string s, int n) {alias = s; precio = n;}
-}
+};
 
 void ingresar_datos(){
     string line;
